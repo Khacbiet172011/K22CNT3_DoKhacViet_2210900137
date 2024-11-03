@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="K22CNT3_DoKhacViet_22010900137_dbModelStoreContainer" CdmEntityContainer="DKVEntities">
+    <EntitySetMapping Name="DANH_GIA">
+      <EntityTypeMapping TypeName="K22CNT3_DoKhacViet_22010900137_dbModel.DANH_GIA">
+        <MappingFragment StoreEntitySet="DANH_GIA">
+          <ScalarProperty Name="Ma_danh_gia" ColumnName="Ma_danh_gia" />
+          <ScalarProperty Name="Ma_thanh_vien" ColumnName="Ma_thanh_vien" />
+          <ScalarProperty Name="Ma_hinh_nen" ColumnName="Ma_hinh_nen" />
+          <ScalarProperty Name="So_sao_danh_gia" ColumnName="So_sao_danh_gia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HINH_NEN">
+      <EntityTypeMapping TypeName="K22CNT3_DoKhacViet_22010900137_dbModel.HINH_NEN">
+        <MappingFragment StoreEntitySet="HINH_NEN">
+          <ScalarProperty Name="Ma_hinh_nen" ColumnName="Ma_hinh_nen" />
+          <ScalarProperty Name="Ten_hinh_nen" ColumnName="Ten_hinh_nen" />
+          <ScalarProperty Name="Do_phan_giai_hinh_nen" ColumnName="Do_phan_giai_hinh_nen" />
+          <ScalarProperty Name="Kich_thuoc_file" ColumnName="Kich_thuoc_file" />
+          <ScalarProperty Name="Ma_nguoi_tai_len" ColumnName="Ma_nguoi_tai_len" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACH_HANG">
+      <EntityTypeMapping TypeName="K22CNT3_DoKhacViet_22010900137_dbModel.KHACH_HANG">
+        <MappingFragment StoreEntitySet="KHACH_HANG">
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="Ho_ten" ColumnName="Ho_ten" />
+          <ScalarProperty Name="Tai_khoan" ColumnName="Tai_khoan" />
+          <ScalarProperty Name="Mat_khau" ColumnName="Mat_khau" />
+          <ScalarProperty Name="Dia_chi" ColumnName="Dia_chi" />
+          <ScalarProperty Name="Dien_thoai" ColumnName="Dien_thoai" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Ngay_sinh" ColumnName="Ngay_sinh" />
+          <ScalarProperty Name="Ngay_cap_nhat" ColumnName="Ngay_cap_nhat" />
+          <ScalarProperty Name="Gioi_tinh" ColumnName="Gioi_tinh" />
+          <ScalarProperty Name="Tich_diem" ColumnName="Tich_diem" />
+          <ScalarProperty Name="Trang_thai" ColumnName="Trang_thai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUAN_TRI">
+      <EntityTypeMapping TypeName="K22CNT3_DoKhacViet_22010900137_dbModel.QUAN_TRI">
+        <MappingFragment StoreEntitySet="QUAN_TRI">
+          <ScalarProperty Name="Tai_khoan" ColumnName="Tai_khoan" />
+          <ScalarProperty Name="Mat_khau" ColumnName="Mat_khau" />
+          <ScalarProperty Name="Trang_thai" ColumnName="Trang_thai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

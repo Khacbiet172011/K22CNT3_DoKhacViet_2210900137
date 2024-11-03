@@ -1,0 +1,57 @@
+﻿@model K22CNT3_DoKhacViet_2210900137.Models.HINH_NEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Dkv2210900137Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HINH_NEN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_hinh_nen)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ma_hinh_nen)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_hinh_nen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_hinh_nen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Do_phan_giai_hinh_nen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Do_phan_giai_hinh_nen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kich_thuoc_file)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kich_thuoc_file)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QUAN_TRI.Mat_khau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QUAN_TRI.Mat_khau)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("DkvEdit", "DkvEdit", new { id = Model.Ma_hinh_nen }) |
+    @Html.ActionLink("Back to List", "DkvIndex")
+</p>

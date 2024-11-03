@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="K22CNT3_DoKhacViet_22010900137_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DANH_GIA">
+    <Key>
+      <PropertyRef Name="Ma_danh_gia" />
+    </Key>
+    <Property Name="Ma_danh_gia" Type="Int32" Nullable="false" />
+    <Property Name="Ma_thanh_vien" Type="Int32" />
+    <Property Name="Ma_hinh_nen" Type="Int32" />
+    <Property Name="So_sao_danh_gia" Type="Byte" />
+    <NavigationProperty Name="HINH_NEN" Relationship="Self.FK__DANH_GIA__Ma_hin__03F0984C" FromRole="DANH_GIA" ToRole="HINH_NEN" />
+    <NavigationProperty Name="KHACH_HANG" Relationship="Self.FK__DANH_GIA__Ma_tha__02FC7413" FromRole="DANH_GIA" ToRole="KHACH_HANG" />
+  </EntityType>
+  <EntityType Name="HINH_NEN">
+    <Key>
+      <PropertyRef Name="Ma_hinh_nen" />
+    </Key>
+    <Property Name="Ma_hinh_nen" Type="Int32" Nullable="false" />
+    <Property Name="Ten_hinh_nen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Do_phan_giai_hinh_nen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kich_thuoc_file" Type="Int32" />
+    <Property Name="Ma_nguoi_tai_len" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DANH_GIA" Relationship="Self.FK__DANH_GIA__Ma_hin__03F0984C" FromRole="HINH_NEN" ToRole="DANH_GIA" />
+    <NavigationProperty Name="QUAN_TRI" Relationship="Self.FK__HINH_NEN__Ma_ngu__7F2BE32F" FromRole="HINH_NEN" ToRole="QUAN_TRI" />
+  </EntityType>
+  <EntityType Name="KHACH_HANG">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="Int32" Nullable="false" />
+    <Property Name="Ho_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Tai_khoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mat_khau" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Dia_chi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Dien_thoai" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ngay_sinh" Type="DateTime" Precision="3" />
+    <Property Name="Ngay_cap_nhat" Type="DateTime" Precision="3" />
+    <Property Name="Gioi_tinh" Type="Byte" />
+    <Property Name="Tich_diem" Type="Int32" />
+    <Property Name="Trang_thai" Type="Byte" />
+    <NavigationProperty Name="DANH_GIA" Relationship="Self.FK__DANH_GIA__Ma_tha__02FC7413" FromRole="KHACH_HANG" ToRole="DANH_GIA" />
+  </EntityType>
+  <EntityType Name="QUAN_TRI">
+    <Key>
+      <PropertyRef Name="Tai_khoan" />
+    </Key>
+    <Property Name="Tai_khoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mat_khau" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Trang_thai" Type="Byte" />
+    <NavigationProperty Name="HINH_NEN" Relationship="Self.FK__HINH_NEN__Ma_ngu__7F2BE32F" FromRole="QUAN_TRI" ToRole="HINH_NEN" />
+  </EntityType>
+  <Association Name="FK__DANH_GIA__Ma_hin__03F0984C">
+    <End Role="HINH_NEN" Type="Self.HINH_NEN" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HINH_NEN">
+        <PropertyRef Name="Ma_hinh_nen" />
+      </Principal>
+      <Dependent Role="DANH_GIA">
+        <PropertyRef Name="Ma_hinh_nen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DANH_GIA__Ma_tha__02FC7413">
+    <End Role="KHACH_HANG" Type="Self.KHACH_HANG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACH_HANG">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="DANH_GIA">
+        <PropertyRef Name="Ma_thanh_vien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HINH_NEN__Ma_ngu__7F2BE32F">
+    <End Role="QUAN_TRI" Type="Self.QUAN_TRI" Multiplicity="0..1" />
+    <End Role="HINH_NEN" Type="Self.HINH_NEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAN_TRI">
+        <PropertyRef Name="Tai_khoan" />
+      </Principal>
+      <Dependent Role="HINH_NEN">
+        <PropertyRef Name="Ma_nguoi_tai_len" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DKVEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DANH_GIA" EntityType="Self.DANH_GIA" />
+    <EntitySet Name="HINH_NEN" EntityType="Self.HINH_NEN" />
+    <EntitySet Name="KHACH_HANG" EntityType="Self.KHACH_HANG" />
+    <EntitySet Name="QUAN_TRI" EntityType="Self.QUAN_TRI" />
+    <AssociationSet Name="FK__DANH_GIA__Ma_hin__03F0984C" Association="Self.FK__DANH_GIA__Ma_hin__03F0984C">
+      <End Role="HINH_NEN" EntitySet="HINH_NEN" />
+      <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DANH_GIA__Ma_tha__02FC7413" Association="Self.FK__DANH_GIA__Ma_tha__02FC7413">
+      <End Role="KHACH_HANG" EntitySet="KHACH_HANG" />
+      <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HINH_NEN__Ma_ngu__7F2BE32F" Association="Self.FK__HINH_NEN__Ma_ngu__7F2BE32F">
+      <End Role="QUAN_TRI" EntitySet="QUAN_TRI" />
+      <End Role="HINH_NEN" EntitySet="HINH_NEN" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

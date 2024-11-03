@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="K22CNT3_DoKhacViet_22010900137_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DANH_GIA">
+    <Key>
+      <PropertyRef Name="Ma_danh_gia" />
+    </Key>
+    <Property Name="Ma_danh_gia" Type="int" Nullable="false" />
+    <Property Name="Ma_thanh_vien" Type="int" />
+    <Property Name="Ma_hinh_nen" Type="int" />
+    <Property Name="So_sao_danh_gia" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="HINH_NEN">
+    <Key>
+      <PropertyRef Name="Ma_hinh_nen" />
+    </Key>
+    <Property Name="Ma_hinh_nen" Type="int" Nullable="false" />
+    <Property Name="Ten_hinh_nen" Type="varchar" MaxLength="100" />
+    <Property Name="Do_phan_giai_hinh_nen" Type="varchar" MaxLength="50" />
+    <Property Name="Kich_thuoc_file" Type="int" />
+    <Property Name="Ma_nguoi_tai_len" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="KHACH_HANG">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="int" Nullable="false" />
+    <Property Name="Ho_ten" Type="varchar" MaxLength="100" />
+    <Property Name="Tai_khoan" Type="varchar" MaxLength="50" />
+    <Property Name="Mat_khau" Type="varchar" MaxLength="32" />
+    <Property Name="Dia_chi" Type="varchar" MaxLength="200" />
+    <Property Name="Dien_thoai" Type="varchar" MaxLength="30" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Ngay_sinh" Type="datetime" />
+    <Property Name="Ngay_cap_nhat" Type="datetime" />
+    <Property Name="Gioi_tinh" Type="tinyint" />
+    <Property Name="Tich_diem" Type="int" />
+    <Property Name="Trang_thai" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="QUAN_TRI">
+    <Key>
+      <PropertyRef Name="Tai_khoan" />
+    </Key>
+    <Property Name="Tai_khoan" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mat_khau" Type="varchar" MaxLength="32" />
+    <Property Name="Trang_thai" Type="tinyint" />
+  </EntityType>
+  <Association Name="FK__DANH_GIA__Ma_hin__03F0984C">
+    <End Role="HINH_NEN" Type="Self.HINH_NEN" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HINH_NEN">
+        <PropertyRef Name="Ma_hinh_nen" />
+      </Principal>
+      <Dependent Role="DANH_GIA">
+        <PropertyRef Name="Ma_hinh_nen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DANH_GIA__Ma_tha__02FC7413">
+    <End Role="KHACH_HANG" Type="Self.KHACH_HANG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACH_HANG">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="DANH_GIA">
+        <PropertyRef Name="Ma_thanh_vien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HINH_NEN__Ma_ngu__7F2BE32F">
+    <End Role="QUAN_TRI" Type="Self.QUAN_TRI" Multiplicity="0..1" />
+    <End Role="HINH_NEN" Type="Self.HINH_NEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAN_TRI">
+        <PropertyRef Name="Tai_khoan" />
+      </Principal>
+      <Dependent Role="HINH_NEN">
+        <PropertyRef Name="Ma_nguoi_tai_len" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="K22CNT3_DoKhacViet_22010900137_dbModelStoreContainer">
+    <EntitySet Name="DANH_GIA" EntityType="Self.DANH_GIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HINH_NEN" EntityType="Self.HINH_NEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHACH_HANG" EntityType="Self.KHACH_HANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUAN_TRI" EntityType="Self.QUAN_TRI" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__DANH_GIA__Ma_hin__03F0984C" Association="Self.FK__DANH_GIA__Ma_hin__03F0984C">
+      <End Role="HINH_NEN" EntitySet="HINH_NEN" />
+      <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DANH_GIA__Ma_tha__02FC7413" Association="Self.FK__DANH_GIA__Ma_tha__02FC7413">
+      <End Role="KHACH_HANG" EntitySet="KHACH_HANG" />
+      <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HINH_NEN__Ma_ngu__7F2BE32F" Association="Self.FK__HINH_NEN__Ma_ngu__7F2BE32F">
+      <End Role="QUAN_TRI" EntitySet="QUAN_TRI" />
+      <End Role="HINH_NEN" EntitySet="HINH_NEN" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<K22CNT3_DoKhacViet_2210900137.Models.QUAN_TRI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Dkv2210900137Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("DkvCreate New", "DkvCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tai_khoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mat_khau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trang_thai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tai_khoan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Mat_khau)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Trang_thai)
+    </td>
+    <td>
+        @Html.ActionLink("DkvEdit", "DkvEdit", new { id = item.Tai_khoan }) |
+        @Html.ActionLink("DkvDetails", "DkvDetails", new { id = item.Tai_khoan }) |
+        @Html.ActionLink("DkvDelete", "DkvDelete", new { id = item.Tai_khoan })
+    </td>
+</tr>
+}
+
+</table>

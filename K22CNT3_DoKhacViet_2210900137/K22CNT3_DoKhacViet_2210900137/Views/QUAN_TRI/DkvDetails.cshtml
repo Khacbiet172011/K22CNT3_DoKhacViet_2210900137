@@ -1,0 +1,41 @@
+﻿@model K22CNT3_DoKhacViet_2210900137.Models.QUAN_TRI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Dkv2210900137Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>QUAN_TRI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tai_khoan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tai_khoan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mat_khau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mat_khau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trang_thai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trang_thai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("DkvEdit", "DkvEdit", new { id = Model.Tai_khoan }) |
+    @Html.ActionLink("Back to List", "DkvIndex")
+</p>
